@@ -1,0 +1,151 @@
+/*
+* The purpose of this class is setting up the actions of the players.
+* Creates the playing interface of the game so players can take turn spinning the spinner and
+move according spots
+* Created by Yolanda Yu
+* Last Modified on 06/15/2017
+*/
+import java.util.Scanner;
+public class Player {
+// fields of Player class
+public static int locationOne;
+public static int locationTwo;
+public static String playerOne;
+public static String playerTwo;
+public static int countOne;
+public static int countTwo;
+public static long endTime;
+public static long time;
+// This method initialize the start of a new game by getting the player&#39;s
+// information
+public static void players() {
+Scanner names = new Scanner(System.in);
+System.out.println(&quot;Enter Player One&#39;s Name&quot;);
+playerOne = names.nextLine(); // Get player one&#39;s name
+System.out.println(&quot;Welcome &quot; + playerOne + &quot;!!&quot; + &quot;\n&quot;);
+
+System.out.println(&quot;Enter Player Twos&#39;s Name&quot;);
+playerTwo = names.nextLine(); // Get player two&#39;s name
+System.out.println(&quot;Welcome &quot; + playerTwo + &quot;!!&quot; + &quot;\n&quot;);
+System.out.println(&quot;The game will now begin&quot; + &quot;\n&quot;);
+// reset the players location to 0 to start from the beginning
+locationOne = 0;
+locationTwo = 0;
+time = System.currentTimeMillis(); // Starts timing the game
+spinOne(); // Player one will spin first
+}
+// This method checks if player one has win the game, if the player has then
+// this method outputs the number of steps and amount of time it took for
+// the player to win
+private static boolean checkOne() {
+// Returns false when player one did not go past 100, therefore it&#39;s
+// player two&#39;s turn
+while (locationOne &lt; 100) {
+spinTwo();
+return true;
+}
+// Once the game is finished, information regarding the amount of steps
+// and time the player took to win will be displayed
+endTime = System.currentTimeMillis() - time; // subtract the start time with
+
+current time to get the time used
+
+System.out.println(&quot;Congratulations &quot; + playerOne + &quot;!&quot;
+
++ &quot; You have won the game&quot; + &quot;\n&quot; + &quot;It look you &quot; + countOne
++ &quot; moves&quot; + &quot; and &quot; + endTime / 1000 + &quot; seconds&quot;);
+
+Leaderboard.addWinnerOne(); // Update the winner list
+return false; // return false, thus ending this method
+}
+// This method checks if player two has win the game, if the player has then
+// this method outputs the number of steps and amount of time it took for
+// the player to win
+private static boolean checkTwo() {
+// Returns false when player two did not go past 100, therefore it&#39;s
+// player one&#39;s turn
+while (locationTwo &lt; 100) {
+spinOne();
+return true;
+}
+
+// Once the game is finished, information regarding the amount of steps
+// and time the player took to win will be displayed
+endTime = System.currentTimeMillis() - time; // subtract the start time with
+
+current time to get the time used
+
+System.out.println(&quot;Congratulations &quot; + playerTwo + &quot;!&quot;
+
++ &quot; You have won the game&quot; + &quot;\n&quot; + &quot;It look you &quot; + countTwo
++ &quot; moves&quot; + &quot; and &quot; + endTime / 1000 + &quot; seconds&quot;);
+
+Leaderboard.addWinnerTwo(); // Update the winner list
+return false; // return false, thus ending this method
+}
+// This method performs the action of spinning the spinner and checking if a
+// snake or a ladder is present in the player&#39;s location
+private static int spinOne() {
+Scanner one = new Scanner(System.in);
+System.out.print(playerOne + &quot; please press Enter to spin&quot;);
+String enter = one.nextLine(); // Player one takes a turn by pressing the &quot;enter&quot;
+
+key
+
+if (enter.equalsIgnoreCase(&quot;&quot;)) {
+countOne++;
+int spin = (int) (Math.random() * 6) + 1; // A random number from 1 to 6
+
+will be spun
+
+System.out.println(playerOne + &quot; has rolled a &quot; + spin);
+locationOne = locationOne + spin; // Update the player&#39;s new location
+System.out.println(playerOne + &quot; is currently on &quot; + locationOne
+
++ &quot;\n&quot;);
+
+// Checks if the player landed on a ladder&#39;s bottom or a snake&#39;s head
+GameBoard.laddersOne();
+GameBoard.snakesOne();
+checkOne(); // Calls checkOne() to see if the player has won the game
+} else {
+// If the player inputs anything else than the &quot;enter&quot; key, it will
+// let the player try again
+System.out.println(&quot;Try Again&quot;);
+spinOne();
+}
+return locationOne;
+}
+// This method performs the action of spinning the spinner and checking if a
+// snake or a ladder is present in the player&#39;s location
+private static int spinTwo() {
+Scanner two = new Scanner(System.in);
+System.out.print(playerTwo + &quot; please press Enter to spin&quot;);
+
+String enter = two.nextLine(); // Player two takes a turn by pressing the &quot;enter&quot;
+
+key
+
+if (enter.equalsIgnoreCase(&quot;&quot;)) {
+countTwo++;
+int spin = (int) (Math.random() * 6) + 1; // A random number from 1
+// to 6 will be spun
+System.out.println(playerTwo + &quot; has rolled a &quot; + spin);
+locationTwo = locationTwo + spin; // Update the player&#39;s new location
+System.out.println(playerTwo + &quot; is currently on &quot; + locationTwo
+
++ &quot;\n&quot;);
+
+// Checks if the player landed on a ladder&#39;s bottom or a snake&#39;s head
+GameBoard.laddersTwo();
+GameBoard.snakesTwo();
+checkTwo(); // Calls checkTwo() to see if the player has won the game
+} else {
+// If the player inputs anything else than the &quot;enter&quot; key, it will
+// let the player try again
+System.out.println(&quot;Try Again&quot;);
+spinTwo();
+}
+return locationTwo;
+}
+}

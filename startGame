@@ -1,0 +1,166 @@
+/*
+* This is the main class of the program.
+* The purpose of this class is to start off the game by displaying instructions and options/action
+that the user can do
+* Codes were modified from XML assignment, XMLApplication class lines 37-54 (repeat
+method)
+* Created by Yolanda Yu
+* Last Modified on 06/15/2017
+*/
+import java.util.Scanner;
+public class startGame {
+// This is the main method of the class/program
+public static void main(String[] args) {
+instructions();
+System.out
+
+.println(&quot;Do you wish to start a new game or view and search the
+
+Winner List?&quot;);
+
+actions(); // calls actions(), which gives the user more options to
+
+// select what they want to do
+
+}
+// Utilizes a scanner that lets the user choose what they want to do with
+// the program. They can either start a new game or search or display the
+// winner list.
+public static void actions() {
+System.out.println(&quot;Enter: &quot; + &quot;\n&quot; + &quot; 1--Start a New Game&quot; + &quot;\n&quot;
+
++ &quot; 2--View the Winner List&quot; + &quot;\n&quot;
++ &quot; 3--Search the Winner List&quot; + &quot;\n&quot;
++ &quot; 4--Display the highest score&quot; + &quot;\n&quot;
++ &quot; 5--Exit the Program&quot;);
+Scanner one = new Scanner(System.in);
+String input = one.nextLine(); // the user&#39;s input/choice
+// depending on the response, the program will call its respective
+// method to perform the certain action.
+switch (input) {
+case &quot;1&quot;:
+
+Player.players();
+System.out
+
+.println(&quot;\n&quot;
+
++ &quot;Do you want to play again or view and
+
+search the Winner List?&quot;
+
++ &quot;\n&quot; + &quot;1-Yes&quot; + &quot;\n&quot; + &quot;2-No&quot;);
+
+repeat();
+break;
+case &quot;2&quot;:
+Leaderboard.display();
+System.out
+
+.println(&quot;\n&quot;
+
++ &quot;Do you want to play a new game or
+
+search the Winner List?&quot;
+
++ &quot;\n&quot; + &quot;1-Yes&quot; + &quot;\n&quot; + &quot;2-No&quot;);
+
+repeat();
+break;
+case &quot;3&quot;:
+Leaderboard.search();
+System.out.println(&quot;\n&quot;
+
++ &quot;Do you want to play a new game or view the Winner
+
+List?&quot;
+
++ &quot;\n&quot; + &quot;1-Yes&quot; + &quot;\n&quot; + &quot;2-No&quot;);
+
+repeat();
+break;
+case &quot;4&quot;:
+Leaderboard.sort();
+System.out.println(&quot;\n&quot;
+
++ &quot;Do you want to play a new game or view or search the
+
+Winner List?&quot;
+
++ &quot;\n&quot; + &quot;1-Yes&quot; + &quot;\n&quot; + &quot;2-No&quot;);
+
+repeat();
+break;
+case &quot;5&quot;:
+one.close();
+break;
+// if none of the above numbers are inputed, the system asks the
+// question again
+default:
+System.out.println(&quot;Try Again&quot;);
+actions();
+}
+}
+
+// This method displays and outputs all the instructions of the snakes and
+// ladders game
+private static void instructions() {
+System.out
+
+.println(&quot;Hello Players! Welcome to Snakes and Ladders!&quot;
+
++ &quot;\n&quot;
++ &quot;\n&quot;
++ &quot;This is the classic game of snakes and ladders.&quot;
++ &quot;\n&quot;
++ &quot;The rules and instructions are simple and are as
+
+follows:&quot;
+
++ &quot;\n&quot;
++ &quot;1. Take turns spinning the spinner&quot;
++ &quot;\n&quot;
++ &quot;2. The player will move the amount of spots
+
+spinned.&quot;
+
++ &quot;\n&quot;
++ &quot;3. If the player lands on a ladder, it will get to
+
+move to a new higher location&quot;
+
++ &quot;\n&quot;
++ &quot;4. If the player lands on a snake, it will fall down
+
+to a new location&quot;
+
++ &quot;\n&quot;
++ &quot;5. The game is won when a player goes over or
+
+reaches location 100&quot;
+
++ &quot;\n&quot;);
+
+}
+// this method asks the user whether or not they want to perform another
+// action
+private static void repeat() {
+Scanner two = new Scanner(System.in);
+String response = two.nextLine();
+// if the user answered yes, the the program asks what the user wants to
+// do, if answered no then the program closes
+if (response.equalsIgnoreCase(&quot;1&quot;)) {
+actions();
+} else if (response.equalsIgnoreCase(&quot;2&quot;)) {
+two.close();
+} else {
+System.out.println(&quot;Try Again&quot; + &quot;\n&quot; + &quot;\n&quot;
+
++ &quot;Do you wish to perform another action?&quot; + &quot;\n&quot;
+
++ &quot;1-Yes&quot; + &quot;\n&quot; + &quot;2-No&quot;);
+
+repeat();
+}
+}
+}

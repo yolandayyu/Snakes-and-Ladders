@@ -1,0 +1,80 @@
+/*
+* The purpose of this class is to store what the snakes and ladders game gameboard consists
+of.
+* It holds all the locations of snakes and ladders.
+* Created by Yolanda Yu
+* Last Modified on 06/15/2017
+*/
+public class GameBoard extends Player {
+// array lists of snake&#39;s and ladder&#39;s start and end locations
+private static int ladderStart[] = { 3, 6, 20, 36, 63, 68 };
+private static int ladderEnd[] = { 51, 27, 70, 55, 95, 98 };
+private static int snakeStart[] = { 25, 34, 47, 65, 87, 91, 99 };
+private static int snakeEnd[] = { 5, 1, 19, 52, 57, 61, 69 };
+// This method checks and compares if player one&#39;s location is on a location
+// that has a ladder&#39;s bottom
+
+public static int laddersOne() {
+for (int l = 0; l &lt; ladderStart.length; l++) {
+if (locationOne == ladderStart[l]) {
+// Informs the player on what is happening and the player&#39;s new
+// location
+System.out.println(&quot;Congrats! You landed on a ladder. &quot;
++ &quot;You are now at &quot; + ladderEnd[l] + &quot;\n&quot;);
+locationOne = ladderEnd[l]; // Set player one&#39;s location to the
+// ladder&#39;s top
+
+}
+}
+return locationOne; // Return player&#39;s one new location
+}
+// This method checks and compares if player one&#39;s location is on a location
+// that has a snake&#39;s head
+public static int snakesOne() {
+for (int s = 0; s &lt; snakeStart.length; s++) {
+if (locationOne == snakeStart[s]) {
+// Informs the player on what is happening and the player&#39;s new
+// location
+System.out.println(&quot;Oops! You landed on a snake. &quot;
++ &quot;You are now at &quot; + snakeEnd[s] + &quot;\n&quot;);
+locationOne = snakeEnd[s]; // Set player one&#39;s location to the
+// snake&#39;s tail
+
+}
+}
+return locationOne; // Return player&#39;s one new location
+}
+// This method checks and compares if player two&#39;s location is on a location
+// that has a ladder&#39;s bottom
+public static int laddersTwo() {
+for (int l = 0; l &lt; ladderStart.length; l++) {
+if (locationTwo == ladderStart[l]) {
+// Informs the player on what is happening and the player&#39;s new
+// location
+System.out.println(&quot;Congrats! You landed on a ladder. &quot;
++ &quot;You are now at &quot; + ladderEnd[l] + &quot;\n&quot;);
+locationTwo = ladderEnd[l]; // Set player two&#39;s location to the
+// ladder&#39;s top
+
+}
+}
+return locationTwo; // Return player&#39;s two new location
+
+}
+// This method checks and compares if player two&#39;s location is on a location
+// that has a snake&#39;s tail
+public static int snakesTwo() {
+for (int s = 0; s &lt; snakeStart.length; s++) {
+if (locationTwo == snakeStart[s]) {
+// Informs the player on what is happening and the player&#39;s new
+// location
+System.out.println(&quot;Oops! You landed on a snake. &quot;
++ &quot;You are now at &quot; + snakeEnd[s] + &quot;\n&quot;);
+locationTwo = snakeEnd[s]; // Set player two&#39;s location to the
+// snake&#39;s tail
+
+}
+}
+return locationTwo; // Return player&#39;s two new location
+}
+}

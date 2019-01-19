@@ -1,13 +1,13 @@
 /*
- * The purpose of this class is to store what the snakes and ladders game gameboard consists of. 
- * It holds all the locations of snakes and ladders.
+ * The purpose of this class is to store the Snakes and Ladders' gameboard. 
+ * It holds all the locations of the snakes and the ladders.
  * Created by Yolanda Yu
  * Last Modified on 06/15/2017
  */
 
 public class GameBoard extends Player {
 
-	// array lists of snake's and ladder's start and end locations
+	// array lists of snakes' and ladders' start and end locations
 	private static int ladderStart[] = { 3, 6, 20, 36, 63, 68 };
 	private static int ladderEnd[] = { 51, 27, 70, 55, 95, 98 };
 	private static int snakeStart[] = { 25, 34, 47, 65, 87, 91, 99 };

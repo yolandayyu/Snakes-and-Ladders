@@ -69,7 +69,7 @@ public class startGame {
 		case "5":
 			one.close();
 			break;
-		// if none of the above numbers are inputed, the system asks the
+		// if none of the above numbers are inputted, the system asks the
 		// question again
 		default:
 			System.out.println("Try Again");
